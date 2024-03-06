@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>PCUFIT</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="/src/css/app.css">
+  <link rel="stylesheet" href="/src/css/feed.css">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="PWAGram">
+  <link rel="apple-touch-icon" href="/src/images/icons/apple-icon-57x57.png" sizes="57x57">
+  <link rel="apple-touch-icon" href="/src/images/icons/apple-icon-60x60.png" sizes="60x60">
+  <link rel="apple-touch-icon" href="/src/images/icons/apple-icon-72x72.png" sizes="72x72">
+  <link rel="apple-touch-icon" href="/src/images/icons/apple-icon-76x76.png" sizes="76x76">
+  <link rel="apple-touch-icon" href="/src/images/icons/apple-icon-114x114.png" sizes="114x114">
+  <link rel="apple-touch-icon" href="/src/images/icons/apple-icon-120x120.png" sizes="120x120">
+  <link rel="apple-touch-icon" href="/src/images/icons/apple-icon-144x144.png" sizes="144x144">
+  <link rel="apple-touch-icon" href="/src/images/icons/apple-icon-152x152.png" sizes="152x152">
+  <link rel="apple-touch-icon" href="/src/images/icons/apple-icon-180x180.png" sizes="180x180">
+  <meta name="msapplication-TileImage" content="/src/images/icons/app-icon-144x144.png">
+  <meta name="msapplication-TileColor" content="#fff">
+  <meta name="theme-color" content="#3f51b5">
+
+  <!-- CDN for tailwind -->
+  <script src="https://cdn.tailwindcss.com/3.3.0"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/tw-elements.min.css" />
+
+  <!-- CDN for jquery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+
+
+</head>
+<body>
+  <!-- Navbar -->
+  <nav
+  class="relative flex w-full flex-wrap items-center justify-between bg-rose-500 py-2 shadow-dark-mild dark:bg-rose-700 lg:py-4">
+    <div class="flex w-full flex-wrap items-center justify-between px-3">
+      <div>
+        <a class="mx-2 my-1 flex items-center lg:mb-0 lg:mt-0" href="#">
+          <img
+            class="me-2"
+            src="/src/images/icons/apple-icon-57x57.png"s
+            style="height: 20px"
+            alt="PCU-FIT Logo"
+            loading="lazy" />
+          <span class="text-white dark:text-white text-2xl font-bold">PCU-FIT</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Greetings -->
+  <div class="w-full text-start mx-12 mt-6 font-dillan text-4xl font-bold typing-container whitespace-normal xl:text-6xl gs_reveal uppercase mb-8"
+    id="typing-container">
+  </div>
+
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-5 w-full px-12" id="card-place">
+    <!-- Card -->
+    <!-- Card -->
+  </div>
+
+<script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
+<script src="/src/js/promise.js"></script>
+<script src="/src/js/fetch.js"></script>
+<script src="/src/js/idb.js"></script>
+<script src="/src/js/utility.js"></script>
+<script src="/src/js/app.js"></script>
+<script src="/src/js/feed.js"></script>
+
+<!-- Script for typing -->
+<script>
+  const texts = ["Hi, PCU People", "Welcome to PCU-FIT", "Let's get fit together!"];
+        const typingContainer = document.getElementById("typing-container");
+        let currentTextIndex = 0;
+        let currentText = "";
+        let isDeleting = false;
+        let typingSpeed = 100;
+
+        function type() {
+            const text = texts[currentTextIndex];
+            if (isDeleting) {
+                currentText = text.substring(0, currentText.length - 1);
+            } else {
+                currentText = text.substring(0, currentText.length + 1);
+            }
+
+            typingContainer.innerHTML = currentText;
+
+            let typingDelay = isDeleting ? typingSpeed / 2 : typingSpeed;
+
+            if (!isDeleting && currentText === text) {
+                typingDelay = 2500;
+                isDeleting = true;
+            } else if (isDeleting && currentText === "") {
+                isDeleting = false;
+                currentTextIndex++;
+                if (currentTextIndex === texts.length) {
+                    currentTextIndex = 0;
+                }
+            }
+
+            setTimeout(type, typingDelay);
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            type();
+        });
+</script>
+</body>
+</html>
