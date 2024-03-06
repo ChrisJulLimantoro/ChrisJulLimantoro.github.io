@@ -1,6 +1,6 @@
 {
-  "name": "Instagram as Progressive Web App",
-  "short_name": "PWAGram",
+  "name": "PCU Fitness App",
+  "short_name": "PCU-FIT",
   "icons": [
     {
       "src": "/src/images/icons/app-icon-48x48.png",
@@ -23,16 +23,6 @@
       "sizes": "192x192"
     },
     {
-      "src": "/src/images/icons/app-icon-256x256.png",
-      "type": "image/png",
-      "sizes": "256x256"
-    },
-    {
-      "src": "/src/images/icons/app-icon-384x384.png",
-      "type": "image/png",
-      "sizes": "384x384"
-    },
-    {
       "src": "/src/images/icons/app-icon-512x512.png",
       "type": "image/png",
       "sizes": "512x512"
@@ -44,7 +34,7 @@
   "orientation": "portrait-primary",
   "background_color": "#fff",
   "theme_color": "#3f51b5",
-  "description": "A simple Instagram Clone, implementing a lot of PWA love.",
+  "description": "A simple program for PCU Fitness. Stay healthy stay flexy",
   "dir": "ltr",
   "lang": "en-US"
 }
