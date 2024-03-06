@@ -16,6 +16,7 @@ var STATIC_FILES = [
   '/src/css/feed.css',
   'https://cdn.jsdelivr.net/npm/tw-elements/dist/css/tw-elements.min.css',
   'https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js',
+  '/src/images/icons/apple-icon-180x180.png',
 ];
 
 // function trimCache(cacheName, maxItems) {
