@@ -1,4 +1,4 @@
-// Get the search parameters from the URL
+    // Get the search parameters from the URL
 const urlParams = new URLSearchParams(window.location.search);
 
 // Get the value of the 'workout' parameter

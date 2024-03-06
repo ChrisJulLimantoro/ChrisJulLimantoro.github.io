@@ -31,9 +31,6 @@
   <script src="https://cdn.tailwindcss.com/3.3.0"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/tw-elements.min.css" />
 
-  <!-- CDN for jquery -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-
 
 </head>
 <body>
@@ -55,14 +52,18 @@
     </div>
   </nav>
 
-  <!-- Greetings -->
-  <div class="w-full text-start mx-12 mt-6 font-dillan text-4xl font-bold typing-container whitespace-normal xl:text-6xl gs_reveal uppercase mb-8"
-    id="typing-container">
-  </div>
-  <div>
-    <h2>
-      You are offline. Please connect to the internet to see the latest content. The content hasn't been downloaded for offline use yet.
-    </h2>
+  <div class="w-screen h-screen flex justify-center items-center">
+    <div class="flex flex-col items-center">
+      <div class="flex justify-center items-center">
+        <img src="/src/images/icons/apple-icon-180x180.png" alt="PCU-FIT Logo" style="height: 200px" />
+      </div>
+      <h2 class="font-bold italic text-md">
+        You are offline. Please connect to the internet to see the latest content.
+      </h2>
+      <h2 class="font-bold italic text-md">
+        The content hasn't been downloaded for offline use yet.
+      </h2>
+    </div>
   </div>
 
 
@@ -72,45 +73,5 @@
 <script src="/src/js/idb.js"></script>
 <script src="/src/js/utility.js"></script>
 <script src="/src/js/app.js"></script>
-
-<!-- Script for typing -->
-<script>
-  const texts = ["Hi, PCU People", "Welcome to PCU-FIT", "Let's get fit together!"];
-        const typingContainer = document.getElementById("typing-container");
-        let currentTextIndex = 0;
-        let currentText = "";
-        let isDeleting = false;
-        let typingSpeed = 100;
-
-        function type() {
-            const text = texts[currentTextIndex];
-            if (isDeleting) {
-                currentText = text.substring(0, currentText.length - 1);
-            } else {
-                currentText = text.substring(0, currentText.length + 1);
-            }
-
-            typingContainer.innerHTML = currentText;
-
-            let typingDelay = isDeleting ? typingSpeed / 2 : typingSpeed;
-
-            if (!isDeleting && currentText === text) {
-                typingDelay = 2500;
-                isDeleting = true;
-            } else if (isDeleting && currentText === "") {
-                isDeleting = false;
-                currentTextIndex++;
-                if (currentTextIndex === texts.length) {
-                    currentTextIndex = 0;
-                }
-            }
-
-            setTimeout(type, typingDelay);
-        }
-
-        document.addEventListener("DOMContentLoaded", function() {
-            type();
-        });
-</script>
 </body>
 </html>

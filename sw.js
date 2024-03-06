@@ -14,7 +14,6 @@ var STATIC_FILES = [
   '/src/js/fetch.js',
   '/src/css/app.css',
   '/src/css/feed.css',
-  'https://cdn.tailwindcss.com/3.3.0',
   'https://cdn.jsdelivr.net/npm/tw-elements/dist/css/tw-elements.min.css',
   'https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js',
 ];
@@ -26,7 +25,7 @@ var STATIC_FILES = [
 //         .then(function (keys) {
 //           if (keys.length > maxItems) {
 //             cache.delete(keys[0])
-//               .then(trimCache(cacheName, maxItems));
+//               .then(trimCache(cacheName, maxItems));p
 //           }
 //         });
 //     })
