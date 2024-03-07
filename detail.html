@@ -58,16 +58,20 @@ class="relative flex w-full flex-wrap items-center justify-between bg-rose-500 p
     <a href="/index.html" class="bg-rose-500 text-white font-bold py-2 px-4 rounded-xl m-5 shadow-xl">Back</a>
 </div>
 
-<div class="w-screen flex justify-center z-10 l-0 t-0" >
-    <div class="w-full lg:w-1/2 p-8 rounded-xl mx-auto mt-5 justify-center shadow-xl" id="canvas">
-        <h1 class="font-bold text-3xl text-center text-black w-full uppercase mb-3"><p id="title"></p></h1>
-        <img src="" alt="sports" class="w-3/4 h-96 object-cover rounded-xl mx-auto mb-3" id="img">
-        <h3 class="text-xl uppercase text-center text-black"><b>level </b>: <span id="level"></span></h3>
-        <h3 class="text-xl uppercase text-center text-black"><b>sets </b>: <span id="sets"></span></h3>
-        <h3 class="text-xl uppercase text-center text-black"><b>reps </b>: <span id="reps"></span></h3>
-        <h3 class="text-xl uppercase text-center text-black"><b>rest </b>: <span id="rest"></span> minute</h3>
-        <h3 class="text-xl uppercase text-center text-black"><b>equipment </b>: <span id="equipment"></span></h3>
-        <h3 class="text-xl uppercase text-center text-black"><b>target </b>: <span id="target"></span></h3>
+<div class="w-screen justify-center z-10 l-0 t-0 px-3 lg:px-5" >
+    <h1 class="font-bold text-5xl text-center text-black w-full hover:underline uppercase mb-3"><span id="title"></span></h1>
+    <div class="w-full p-8 rounded-xl mx-auto mt-5 justify-center shadow-xl flex flex-col md:flex-row" id="canvas">
+        <div class="w-full">
+            <img src="" alt="sports" class="w-3/4 h-auto object-cover rounded-xl mx-auto mb-3 hover:shadow-xl shadow-lg" id="img">
+        </div>
+        <div class="text-center lg:text-start text-black w-full">
+            <h3 class="text-xl uppercase lg:mb-4"><b>level </b>: <span id="level"></span></h3>
+            <h3 class="text-xl uppercase lg:mb-4"><b>sets </b>: <span id="sets"></span></h3>
+            <h3 class="text-xl uppercase lg:mb-4"><b>reps </b>: <span id="reps"></span></h3>
+            <h3 class="text-xl uppercase lg:mb-4"><b>rest </b>: <span id="rest"></span> minute</h3>
+            <h3 class="text-xl uppercase lg:mb-4"><b>equipment </b>: <span id="equipment"></span></h3>
+            <h3 class="text-xl uppercase lg:mb-4"><b>target </b>: <span id="target"></span></h3>
+        </div>
     </div>
 </div>
 
