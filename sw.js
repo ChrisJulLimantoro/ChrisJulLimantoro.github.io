@@ -57,7 +57,7 @@ self.addEventListener('activate', function (event) {
   return self.clients.claim();
 });
 
-function isInArray(string, array) {
+function isInArray(string, array) { 
   var cachePath;
   if (string.indexOf(self.origin) === 0) { // request targets domain where we serve the page from (i.e. NOT a CDN)
     console.log('matched ', string);
