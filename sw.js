@@ -12,8 +12,6 @@ var STATIC_FILES = [
   '/src/js/idb.js',
   '/src/js/promise.js',
   '/src/js/fetch.js',
-  '/src/css/app.css',
-  '/src/css/feed.css',
   'https://cdn.jsdelivr.net/npm/tw-elements/dist/css/tw-elements.min.css',
   'https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js',
   '/src/images/icons/apple-icon-180x180.png',
