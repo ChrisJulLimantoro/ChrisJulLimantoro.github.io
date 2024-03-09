@@ -72,6 +72,7 @@ function isInArray(string, array) {
 
 // self.addEventListener('fetch', function (event) {
 
+
 //   var url = 'https://pcu-fit-default-rtdb.asia-southeast1.firebasedatabase.app/workouts';
 //   if (event.request.url.indexOf(url) > -1) {
 //     event.respondWith(fetch(event.request)
@@ -123,6 +124,7 @@ function isInArray(string, array) {
 //   }
 // });
 
+
 // Try
 self.addEventListener('fetch', function (event) {
   var url = 'https://pcu-fit-default-rtdb.asia-southeast1.firebasedatabase.app/workouts';
@@ -131,6 +133,9 @@ self.addEventListener('fetch', function (event) {
     event.respondWith(
       fetch(event.request)
         .then(function (res) {
+          if(!res.ok){
+            throw new Error('Network response was not ok.');
+          }
           var clonedRes = res.clone();
           clearAllData('workouts')
             .then(function () {

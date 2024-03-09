@@ -6,6 +6,7 @@ var dbPromise = idb.open('workouts-store', 1, function (db) {
 });
 
 function writeData(st, data) {
+  
   return dbPromise
     .then(function(db) {
       var tx = db.transaction(st, 'readwrite');
