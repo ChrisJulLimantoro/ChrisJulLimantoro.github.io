@@ -31,6 +31,7 @@ fetch(url)
     })
     .catch(function(err) {
         console.log('Error: ', err);
+        console.log(window.location.pathname + window.location.search);
         if(!caches.match(window.location.pathname + window.location.search)){
             window.location.href='/offline.html';
         }
