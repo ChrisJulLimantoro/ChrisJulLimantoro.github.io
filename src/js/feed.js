@@ -1,8 +1,9 @@
 var shareImageButton = document.querySelector('#share-image-button');
 var workoutsArea = document.querySelector('#card-place');
+var button = document.querySelector('#install-button');
 
 function openCreatePostModal() {
-  createPostArea.style.display = 'block';
+  // createPostArea.style.display = 'block';
   if (deferredPrompt) {
     deferredPrompt.prompt();
 
@@ -18,28 +19,10 @@ function openCreatePostModal() {
 
     deferredPrompt = null;
   }
-
-  // if ('serviceWorker' in navigator) {
-  //   navigator.serviceWorker.getRegistrations()
-  //     .then(function(registrations) {
-  //       for (var i = 0; i < registrations.length; i++) {
-  //         registrations[i].unregister();
-  //       }
-  //     })
-  // }
 }
 
-// Currently not in use, allows to save assets in cache on demand otherwise
-function onSaveButtonClicked(event) {
-  console.log('clicked');
-  if ('caches' in window) {
-    caches.open('user-requested')
-      .then(function(cache) {
-        cache.add('https://httpbin.org/get');
-        cache.add('/src/images/sf-boat.jpg');
-      });
-  }
-}
+button.addEventListener('click', openCreatePostModal);
+
 
 function clearCards() {
   while(workoutsArea.hasChildNodes()) {
@@ -89,9 +72,11 @@ var networkDataReceived = false;
 
 fetch(url)
   .then(function(res) {
+    console.log('ambil data');
     return res.json();
   })
   .then(function(data) {
+    console.log(data)
     networkDataReceived = true;
     console.log('From web', data);
     var dataArray = [];

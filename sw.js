@@ -68,65 +68,12 @@ function isInArray(string, array) {
   return array.indexOf(cachePath) > -1;
 }
 
-// self.addEventListener('fetch', function (event) {
-
-
-//   var url = 'https://pcu-fit-default-rtdb.asia-southeast1.firebasedatabase.app/workouts';
-//   if (event.request.url.indexOf(url) > -1) {
-//     event.respondWith(fetch(event.request)
-//       .then(function (res) {
-//         var clonedRes = res.clone();
-//         clearAllData('workouts')
-//           .then(function () {
-//             return clonedRes.json();
-//           })
-//           .then(function (data) {
-//             for (var key in data) {
-//               writeData('workouts', data[key])
-//             }
-//           });
-//         return res;
-//       })
-//     );
-//   } else if (isInArray(event.request.url, STATIC_FILES)) {
-//     event.respondWith(
-//       caches.match(event.request)
-//     );
-//   } else {
-//     event.respondWith(
-//       caches.match(event.request)
-//         .then(function (response) {
-//           if (response) {
-//             return response;
-//           } else {
-//             return fetch(event.request)
-//               .then(function (res) {
-//                 return caches.open(CACHE_DYNAMIC_NAME)
-//                   .then(function (cache) {
-//                     // trimCache(CACHE_DYNAMIC_NAME, 3);
-//                     cache.put(event.request.url, res.clone());
-//                     return res;
-//                   })
-//               })
-//               .catch(function (err) {
-//                 return caches.open(CACHE_STATIC_NAME)
-//                   .then(function (cache) {
-//                     if (event.request.headers.get('accept').includes('text/html')) {
-//                       return cache.match('/offline.html');
-//                     }
-//                   });
-//               });
-//           }
-//         })
-//     );
-//   }
-// });
-
-
-// Try
+// Network then cache 
 self.addEventListener('fetch', function (event) {
+  console.log('intercept');
   var url = 'https://pcu-fit-default-rtdb.asia-southeast1.firebasedatabase.app/workouts';
-  
+  var url_detail = 'https://pcu-fit-default-rtdb.asia-southeast1.firebasedatabase.app/workouts/';
+  console.log("ini url : ", event.request.url);
   if (event.request.url.indexOf(url) > -1) {
     event.respondWith(
       fetch(event.request)
@@ -135,15 +82,23 @@ self.addEventListener('fetch', function (event) {
             throw new Error('Network response was not ok.');
           }
           var clonedRes = res.clone();
-          clearAllData('workouts')
-            .then(function () {
-              return clonedRes.json();
-            })
+          // clearAllData('workouts')
+          //   .then(function () {
+          //     returnclonedRes.json(); 
+          //   })
+          clonedRes.json()
             .then(function (data) {
-              for (var key in data) {
-                writeData('workouts', data[key]);
+              console.log("ini data : ", data);
+              if(event.request.url.indexOf(url_detail) > -1){
+                writeData('workouts', data);
+              }else{
+                for (var key in data) {
+                  console.log(data[key])
+                  writeData('workouts', data[key]);
+                }
               }
             });
+            console.log(res);
           return res;
         })
         .catch(function (error) {

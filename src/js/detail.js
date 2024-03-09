@@ -14,28 +14,42 @@ var url = 'https://pcu-fit-default-rtdb.asia-southeast1.firebasedatabase.app/wor
 var networkDataReceived = false;
 fetch(url)
     .then(function(res) {
-        return res.json();
+        if(!res.ok){
+            throw new Error('Network response was not ok.');
+        }
+        const contentType = res.headers.get('Content-Type');
+        if(contentType && contentType.includes('application/json')){
+            return res.json();
+        }else{
+            throw new Error('file is offline');
+        }
     })
     .then(function(data) {
         networkDataReceived = true;
         console.log('From web', data);
         updateUI(data);
-    });
-
-if ('indexedDB' in window) {
-    readAllData('workouts')
-        .then(function(data) {
-            if (!networkDataReceived) {
-                console.log('From cache', data);
-                for (var key in data) {
-                    if (data[key].id == workoutParam) {
-                        updateUI(data[key]);
-                    }
+    })
+    .catch(function(err) {
+        console.log('Error: ', err);
+        if(!caches.match(window.location.pathname + window.location.search)){
+            window.location.href='/offline.html';
+        }
+        else{
+            if ('indexedDB' in window) {
+                readAllData('workouts')
+                    .then(function(data) {
+                        if (!networkDataReceived) {
+                            console.log('From cache', data);
+                            for (var key in data) {
+                                if (data[key].id == workoutParam) {
+                                    updateUI(data[key]);
+                                }
+                            }
+                        }
+                    });
                 }
-            }
-        });
-}
-
+        }
+    });
 function updateUI(data) {
     var title = document.querySelector('#title');
     title.textContent = data.title;
