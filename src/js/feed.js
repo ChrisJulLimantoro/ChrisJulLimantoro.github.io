@@ -79,19 +79,28 @@ fetch(url)
     console.log(data)
     networkDataReceived = true;
     console.log('From web', data);
-    var dataArray = [];
-    for (var key in data) {
-      dataArray.push(data[key]);
+    if (workouts.length > 0) {
+      workouts = [];
     }
+    for (var key in data) {
+      workouts.push(data[key]);
+      writeData('workouts', data[key])
+    }
+    workouts.sort((a, b) => {
+      return a.name.localeCompare(b.name);
+    });
     updateUI(dataArray);
   });
 
-if ('indexedDB' in window) {
-  readAllData('workouts')
-    .then(function(data) {
+  if ("indexedDB" in window) {
+    readAllData("workouts").then(function (data) {
       if (!networkDataReceived) {
-        console.log('From cache', data);
-        updateUI(data);
+        console.log("From cache", data);
+        workouts = [];
+        workouts = data.sort((a, b) => {
+          return a.name.localeCompare(b.name);
+        });
+        updateUI(workouts);
       }
     });
-}
+  }

@@ -76,7 +76,7 @@ self.addEventListener('fetch', function (event) {
   console.log("ini url : ", event.request.url);
   if (event.request.url.indexOf(url) > -1) {
     event.respondWith(
-      fetch(event.request)
+      fetch(event.request,{ headers: { "Cache-Control": "no-cache" } })
         .then(function (res) {
           if(!res.ok){
             throw new Error('Network response was not ok.');
@@ -118,7 +118,7 @@ self.addEventListener('fetch', function (event) {
           if (response) {
             return response;
           } else {
-            return fetch(event.request)
+            return fetch(event.request,{ headers: { "Cache-Control": "no-cache" } })
               .then(function (res) {
                 return caches.open(CACHE_DYNAMIC_NAME)
                   .then(function (cache) {
